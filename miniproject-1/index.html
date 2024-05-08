@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Practice</title>
+
+    <!--Custome CSS Style sheet-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>Problem Statement</h3>
+    <p>Create a reactriangle and mouse hovers ffrom one end to another box should change colors from red to blue</p>
+    <div class="rectangle"></div>
+
+    <!--Gsap cdn-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Custom JS file-->
+    <script src="script.js"></script>
+    <canvas id="myCanvas" width="300" height="150"></canvas>
+
+    <script>
+      // Create a canvas element
+      const canvas = document.getElementById("myCanvas");
+  
+      // Get the 2D rendering context
+      const ctx = canvas.getContext("2d");
+  
+      // Define the rectangle properties
+      const x = 50;
+      const y = 50;
+      const width = 100;
+      const height = 50;
+  
+      // Draw the rectangle
+      ctx.fillStyle = "red";
+      ctx.fillRect(x, y, width, height);
+  
+      // Add an event listener for mouse move events
+      canvas.addEventListener("mousemove", function(e) {
+        // Get the mouse position
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+  
+        // Update the rectangle position
+        x = mouseX - width / 2;
+        y = mouseY - height / 2;
+  
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+        // Draw the rectangle at the new position
+        ctx.fillStyle = "red";
+        ctx.fillRect(x, y, width, height);
+      });
+    </script>
+</body>
+</html>
